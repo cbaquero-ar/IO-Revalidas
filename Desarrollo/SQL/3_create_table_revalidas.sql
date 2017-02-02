@@ -15,6 +15,7 @@ CREATE TABLE public.revalidas
     plan text COLLATE pg_catalog."default",
     tutor_r1 boolean,
     tutor_r2 boolean,
+	recibido_fin_r1 boolean,
     usable boolean
 )
 WITH (
