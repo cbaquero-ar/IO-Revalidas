@@ -1,2 +1,2 @@
 --user: revalidas
-COPY public.revalidas FROM 'C:\Users\AnaCarolina\Documents\GitHub\IO-Revalidas\Desarrollo\Data\R2 final.csv' USING DELIMITERS ',' with csv;
+COPY public.revalidas FROM 'D:\R2_3_final.csv' USING DELIMITERS ',' with csv;

@@ -16,7 +16,9 @@ CREATE TABLE public.revalidas
     tutor_r1 boolean,
     tutor_r2 boolean,
 	recibido_fin_r1 boolean,
-    usable boolean
+    usable boolean,
+
+   PRIMARY KEY ( nro_solicitud )
 )
 WITH (
     OIDS = FALSE
