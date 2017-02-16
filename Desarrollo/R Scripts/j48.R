@@ -13,7 +13,7 @@ df_postgres <- dbGetQuery(con, "SELECT finales_adeudados,
 
 ## Identify a decision tree.
 df_postgres <- lapply(df_postgres, as.factor)
-m <- J48(recibido_fin_r1 ~finales_adeudados + cursadas_adeudadas, data = df_postgres, control= Weka_control(M=1,U=TRUE))
+m <- J48(recibido_fin_r1 ~., data = df_postgres, control= Weka_control(M=1,U=TRUE))
 
 m
 
