@@ -2,9 +2,14 @@
 require("RWeka")
 
 df_postgres <- dbGetQuery(con, "SELECT finales_adeudados,
-						   cursadas_adeudadas,
-						   recibido_fin_r1 
-						from revalidas")
+    									cursadas_adeudadas,
+									    optativas_adeudadas,
+									    adeuda_trab_final_inicio ,
+									    plan,
+									    tutor_r1,
+									    tutor_r2,
+										recibido_fin_r1
+									from revalidas")
 
 ## Identify a decision tree.
 df_postgres <- lapply(df_postgres, as.factor)
