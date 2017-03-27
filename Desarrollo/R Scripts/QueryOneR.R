@@ -1,11 +1,9 @@
 # query the data from postgreSQL 
 #df_postgres <- dbGetQuery(con, "SELECT anio_ingreso,finales_adeudados,cursadas_adeudadas,optativas_adeudadas,adeuda_trab_final_inicio,plan,tutor_r1, recibido_fin_r1 from revalidas WHERE usable=TRUE")
-df_postgres <- dbGetQuery(con, "SELECT  fecha_inscripcion,
-										finales_adeudados,
+df_postgres <- dbGetQuery(con, "SELECT  finales_adeudados,
 										cursadas_adeudadas,
 										optativas_adeudadas,
-										adeuda_trab_final_inicio,										
-										fecha_recibido,
+										adeuda_trab_final_inicio,	
 										recibido
 								from revalidas 
 								WHERE usable=TRUE")
