@@ -1,9 +1,9 @@
--- user: revalidas
+﻿-- user: revalidas
 
 -- Table: public.revalidas
 
 DROP TABLE IF EXISTS public.revalidas;
-
+SET DATESTYLE TO DMY;
 CREATE TABLE public.revalidas
 (
     nro_solicitud integer,
