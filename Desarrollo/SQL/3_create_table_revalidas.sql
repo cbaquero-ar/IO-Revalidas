@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS public.revalidas;
 CREATE TABLE public.revalidas
 (
     nro_solicitud integer,
+    fecha_inscripcion date,
     anio_ingreso text COLLATE pg_catalog."default",
     finales_adeudados integer,
     cursadas_adeudadas integer,
@@ -15,7 +16,8 @@ CREATE TABLE public.revalidas
     plan text COLLATE pg_catalog."default",
     tutor_r1 boolean,
     tutor_r2 boolean,
-	recibido_fin_r1 boolean,
+	recibido boolean,
+    fecha_recibido date,
     usable boolean,
 
    PRIMARY KEY ( nro_solicitud )
