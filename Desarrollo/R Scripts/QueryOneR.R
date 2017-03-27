@@ -4,9 +4,9 @@ df_postgres <- dbGetQuery(con, "SELECT  fecha_inscripcion,
 										finales_adeudados,
 										cursadas_adeudadas,
 										optativas_adeudadas,
-										adeuda_trab_final_inicio,
-										recibido,
-										fecha_recibido 
+										adeuda_trab_final_inicio,										
+										fecha_recibido,
+										recibido
 								from revalidas 
 								WHERE usable=TRUE")
 
