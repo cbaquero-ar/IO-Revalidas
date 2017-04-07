@@ -1,4 +1,4 @@
-## install.packages("RWeka")
+install.packages("RWeka")
 require("RWeka")
 
 df_postgres <- dbGetQuery(con, "SELECT finales_adeudados,
@@ -8,12 +8,12 @@ df_postgres <- dbGetQuery(con, "SELECT finales_adeudados,
 									    plan,
 									    tutor_r1,
 									    tutor_r2,
-										recibido_fin_r1
+										recibido
 									from revalidas")
 
 ## Identify a decision tree.
 df_postgres <- lapply(df_postgres, as.factor)
-m <- J48(recibido_fin_r1 ~., data = df_postgres, control= Weka_control(M=1,U=TRUE))
+m <- J48(recibido ~., data = df_postgres, control= Weka_control(M=1,U=TRUE))
 
 m
 
