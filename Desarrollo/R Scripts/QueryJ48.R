@@ -1,12 +1,11 @@
 install.packages("RWeka")
 require("RWeka")
 
-df_postgres <- dbGetQuery(con, "SELECT finales_adeudados,
+df_postgres <- dbGetQuery(con, "SELECT dif_anio_ingreso,
+										finales_adeudados,
     									cursadas_adeudadas,
 									    optativas_adeudadas,
 									    adeuda_trab_final_inicio ,
-									    plan,
-									    tutor_r1,
 									    tutor_r2,
 										recibido
 									from revalidas")

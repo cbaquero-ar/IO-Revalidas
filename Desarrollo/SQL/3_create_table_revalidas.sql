@@ -9,6 +9,7 @@ CREATE TABLE public.revalidas
     nro_solicitud integer,
     fecha_inscripcion date,
     anio_ingreso text COLLATE pg_catalog."default",
+    dif_anio_ingreso integer,
     finales_adeudados integer,
     cursadas_adeudadas integer,
     optativas_adeudadas integer,
