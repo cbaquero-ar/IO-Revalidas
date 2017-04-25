@@ -7,6 +7,7 @@ df_postgres <- dbGetQuery(con, "SELECT dif_anio_ingreso,
 									    optativas_adeudadas,
 									    adeuda_trab_final_inicio,
 									    tutor_r2,
+										plan,
 										graduado
 									from revalidas")
 
