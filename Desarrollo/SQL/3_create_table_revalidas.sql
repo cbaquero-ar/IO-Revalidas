@@ -17,8 +17,8 @@ CREATE TABLE public.revalidas
     plan text COLLATE pg_catalog."default",
     tutor_r1 boolean,
     tutor_r2 boolean,
-	recibido boolean,
-    fecha_recibido date,
+	graduado boolean,
+    fecha_graduado date,
     usable boolean,
 
    PRIMARY KEY ( nro_solicitud )

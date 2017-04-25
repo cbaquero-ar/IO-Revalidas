@@ -5,14 +5,14 @@ df_postgres <- dbGetQuery(con, "SELECT dif_anio_ingreso,
 										finales_adeudados,
     									cursadas_adeudadas,
 									    optativas_adeudadas,
-									    adeuda_trab_final_inicio ,
+									    adeuda_trab_final_inicio,
 									    tutor_r2,
-										recibido
+										graduado
 									from revalidas")
 
 ## Identify a decision tree.
 df_postgres <- lapply(df_postgres, as.factor)
-m <- J48(recibido ~., data = df_postgres, control= Weka_control(M=1,U=TRUE))
+m <- J48(graduado ~., data = df_postgres, control= Weka_control(M=1,U=TRUE))
 
 m
 
