@@ -1,4 +1,12 @@
-# install.packages("RPostgreSQL")
+#Set default CRAN mirror to download packages on file //installation-path/etc/Rprofile.site
+
+#Set to install packages if they are not previously installed
+list.of.packages <- c("OneR", "RPostgreSQL","RWeka")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
+
+
+#Connect to PostgreSQL DB
 require("RPostgreSQL")
  
 # create a connection

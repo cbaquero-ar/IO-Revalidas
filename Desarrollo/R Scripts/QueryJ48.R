@@ -1,4 +1,4 @@
-install.packages("RWeka")
+#install.packages("RWeka")
 require("RWeka")
 
 df_postgres <- dbGetQuery(con, "SELECT dif_anio_ingreso,
