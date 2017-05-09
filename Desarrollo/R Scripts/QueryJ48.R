@@ -1,15 +1,16 @@
 #install.packages("RWeka")
 require("RWeka")
 
-df_postgres <- dbGetQuery(con, "SELECT dif_anio_ingreso,
-										finales_adeudados,
-    									cursadas_adeudadas,
-									    optativas_adeudadas,
-									    adeuda_trab_final_inicio,
-									    tutor_r2,
-										plan,
-										graduado
-									from revalidas")
+df_postgres <- dbGetQuery(con, 
+	"SELECT  	 	
+	plan,
+	finales_adeudados,
+	cursadas_adeudadas,
+	optativas_adeudadas,
+	adeuda_trab_final_inicio,
+	graduado
+	FROM revalidas 
+	WHERE usable=TRUE")
 
 ## Identify a decision tree.
 df_postgres <- lapply(df_postgres, as.factor)

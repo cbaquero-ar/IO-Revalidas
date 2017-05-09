@@ -15,3 +15,16 @@ SELECT
 	graduado
 	FROM revalidas 
 	WHERE usable=TRUE
+
+SELECT  
+	date_part('year',fecha_inscripcion)-anio_ingreso as dif_anios_ingreso_total, 	 	
+	plan,
+	finales_adeudados,
+	cursadas_adeudadas,
+	optativas_adeudadas,
+	adeuda_trab_final_inicio,
+	tutor_r1,
+	tutor_r2,
+	graduado
+	FROM revalidas 
+	WHERE usable=TRUE

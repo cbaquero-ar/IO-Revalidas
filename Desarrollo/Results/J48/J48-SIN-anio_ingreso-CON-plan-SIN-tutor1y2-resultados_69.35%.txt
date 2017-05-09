@@ -1,0 +1,71 @@
+﻿SELECT  	 	
+	plan,
+	finales_adeudados,
+	cursadas_adeudadas,
+	optativas_adeudadas,
+	adeuda_trab_final_inicio,
+	graduado
+	FROM revalidas 
+	WHERE usable=TRUE
+	
+	#De alguna forma año de ingreso y plan están relacionados, pero plan es más abarcativo porque incluye varios años de ingreso...
+	#Al sacarlo totalmente y ver que la precisión aumenta, se podría decir que año ingreso mete ruido si al sacarlo y dejar el plan mejora.
+ 
+	#Si bien dijimos de dejarlo para que se puedan clasificar por plan los alumnos, 
+	#no sé si está bien decir "que los clasifica mejor", porque en ese caso no debería mantenerse la precisión?
+
+
+J48 unpruned tree
+------------------
+
+finales_adeudados = 0
+|   plan = 1995
+|   |   adeuda_trab_final_inicio = FALSE
+|   |   |   optativas_adeudadas = 0: TRUE (3.0)
+|   |   |   optativas_adeudadas = 1: FALSE (1.0)
+|   |   |   optativas_adeudadas = 2: TRUE (0.0)
+|   |   |   optativas_adeudadas = 3: TRUE (0.0)
+|   |   |   optativas_adeudadas = 4: TRUE (0.0)
+|   |   |   optativas_adeudadas = 5: TRUE (0.0)
+|   |   adeuda_trab_final_inicio = TRUE: FALSE (3.0)
+|   plan = 88: FALSE (8.0/1.0)
+|   plan = S95: TRUE (70.0/25.0)
+finales_adeudados = 1
+|   cursadas_adeudadas = 0: FALSE (5.0)
+|   cursadas_adeudadas = 1
+|   |   plan = 1995: FALSE (0.0)
+|   |   plan = 88: FALSE (2.0)
+|   |   plan = S95
+|   |   |   optativas_adeudadas = 0
+|   |   |   |   adeuda_trab_final_inicio = FALSE: TRUE (1.0)
+|   |   |   |   adeuda_trab_final_inicio = TRUE: FALSE (3.0/1.0)
+|   |   |   optativas_adeudadas = 1: FALSE (1.0)
+|   |   |   optativas_adeudadas = 2: FALSE (1.0)
+|   |   |   optativas_adeudadas = 3: FALSE (0.0)
+|   |   |   optativas_adeudadas = 4: FALSE (0.0)
+|   |   |   optativas_adeudadas = 5: FALSE (0.0)
+|   cursadas_adeudadas = 2: FALSE (0.0)
+|   cursadas_adeudadas = 4: FALSE (0.0)
+finales_adeudados = 2
+|   adeuda_trab_final_inicio = FALSE
+|   |   plan = 1995: FALSE (0.0)
+|   |   plan = 88: FALSE (1.0)
+|   |   plan = S95: TRUE (1.0)
+|   adeuda_trab_final_inicio = TRUE: FALSE (12.0/1.0)
+finales_adeudados = 3: FALSE (6.0)
+finales_adeudados = 4: FALSE (5.0)
+finales_adeudados = 5: TRUE (1.0)
+
+Number of Leaves  :     28
+
+Size of the tree :      38
+
+> 
+> ## Use 10 fold cross-validation.
+> e <- evaluate_Weka_classifier(m, cost = matrix(c(0,2,1,0), ncol = 2),numFolds = 10, complexity = TRUE,seed = 123, class = TRUE)
+> e
+=== 10 Fold Cross Validation ===
+
+=== Summary ===
+
+Correctly Classified Instances          86               69.3548 %

@@ -1,0 +1,110 @@
+SELECT  
+	date_part('year',fecha_inscripcion)-anio_ingreso as dif_anios_ingreso_total,
+	plan,	
+	finales_adeudados,
+	cursadas_adeudadas,
+	optativas_adeudadas,
+	adeuda_trab_final_inicio,
+	graduado
+	FROM revalidas 
+	WHERE usable=TRUE
+
+J48 unpruned tree
+------------------
+
+finales_adeudados = 0
+|   dif_anios_ingreso_total = 10
+|   |   plan = 1995: FALSE (1.0)
+|   |   plan = 88: FALSE (0.0)
+|   |   plan = S95: TRUE (3.0/1.0)
+|   dif_anios_ingreso_total = 11
+|   |   adeuda_trab_final_inicio = FALSE: TRUE (3.0)
+|   |   adeuda_trab_final_inicio = TRUE: FALSE (8.0/3.0)
+|   dif_anios_ingreso_total = 12
+|   |   adeuda_trab_final_inicio = FALSE: TRUE (4.0)
+|   |   adeuda_trab_final_inicio = TRUE
+|   |   |   plan = 1995: FALSE (1.0)
+|   |   |   plan = 88: TRUE (0.0)
+|   |   |   plan = S95: TRUE (8.0/3.0)
+|   dif_anios_ingreso_total = 13
+|   |   plan = 1995: FALSE (1.0)
+|   |   plan = 88: TRUE (0.0)
+|   |   plan = S95: TRUE (14.0/5.0)
+|   dif_anios_ingreso_total = 14: FALSE (9.0/4.0)
+|   dif_anios_ingreso_total = 15: TRUE (6.0/2.0)
+|   dif_anios_ingreso_total = 16: TRUE (7.0/2.0)
+|   dif_anios_ingreso_total = 17: TRUE (3.0)
+|   dif_anios_ingreso_total = 18: TRUE (3.0/1.0)
+|   dif_anios_ingreso_total = 19: TRUE (3.0/1.0)
+|   dif_anios_ingreso_total = 21
+|   |   plan = 1995: TRUE (0.0)
+|   |   plan = 88: FALSE (1.0)
+|   |   plan = S95: TRUE (2.0)
+|   dif_anios_ingreso_total = 22: FALSE (2.0)
+|   dif_anios_ingreso_total = 23: FALSE (2.0)
+|   dif_anios_ingreso_total = 25: FALSE (1.0)
+|   dif_anios_ingreso_total = 26: TRUE (0.0)
+|   dif_anios_ingreso_total = 27: FALSE (1.0)
+|   dif_anios_ingreso_total = 28: FALSE (1.0)
+|   dif_anios_ingreso_total = 29: TRUE (1.0)
+finales_adeudados = 1
+|   dif_anios_ingreso_total = 10: FALSE (2.0)
+|   dif_anios_ingreso_total = 11: FALSE (2.0)
+|   dif_anios_ingreso_total = 12: TRUE (1.0)
+|   dif_anios_ingreso_total = 13: FALSE (2.0)
+|   dif_anios_ingreso_total = 14: FALSE (0.0)
+|   dif_anios_ingreso_total = 15: FALSE (2.0)
+|   dif_anios_ingreso_total = 16
+|   |   optativas_adeudadas = 0: TRUE (1.0)
+|   |   optativas_adeudadas = 1: FALSE (0.0)
+|   |   optativas_adeudadas = 2: FALSE (1.0)
+|   |   optativas_adeudadas = 3: FALSE (0.0)
+|   |   optativas_adeudadas = 4: FALSE (0.0)
+|   |   optativas_adeudadas = 5: FALSE (0.0)
+|   dif_anios_ingreso_total = 17: FALSE (0.0)
+|   dif_anios_ingreso_total = 18: FALSE (0.0)
+|   dif_anios_ingreso_total = 19: FALSE (0.0)
+|   dif_anios_ingreso_total = 21: FALSE (0.0)
+|   dif_anios_ingreso_total = 22: FALSE (0.0)
+|   dif_anios_ingreso_total = 23: FALSE (1.0)
+|   dif_anios_ingreso_total = 25: FALSE (0.0)
+|   dif_anios_ingreso_total = 26: FALSE (1.0)
+|   dif_anios_ingreso_total = 27: FALSE (0.0)
+|   dif_anios_ingreso_total = 28: FALSE (0.0)
+|   dif_anios_ingreso_total = 29: FALSE (0.0)
+finales_adeudados = 2
+|   dif_anios_ingreso_total = 10: FALSE (2.0)
+|   dif_anios_ingreso_total = 11: FALSE (2.0)
+|   dif_anios_ingreso_total = 12: TRUE (2.0)
+|   dif_anios_ingreso_total = 13: FALSE (0.0)
+|   dif_anios_ingreso_total = 14: FALSE (3.0)
+|   dif_anios_ingreso_total = 15: FALSE (1.0)
+|   dif_anios_ingreso_total = 16: FALSE (0.0)
+|   dif_anios_ingreso_total = 17: FALSE (2.0)
+|   dif_anios_ingreso_total = 18: FALSE (0.0)
+|   dif_anios_ingreso_total = 19: FALSE (1.0)
+|   dif_anios_ingreso_total = 21: FALSE (0.0)
+|   dif_anios_ingreso_total = 22: FALSE (0.0)
+|   dif_anios_ingreso_total = 23: FALSE (0.0)
+|   dif_anios_ingreso_total = 25: FALSE (0.0)
+|   dif_anios_ingreso_total = 26: FALSE (1.0)
+|   dif_anios_ingreso_total = 27: FALSE (0.0)
+|   dif_anios_ingreso_total = 28: FALSE (0.0)
+|   dif_anios_ingreso_total = 29: FALSE (0.0)
+finales_adeudados = 3: FALSE (6.0)
+finales_adeudados = 4: FALSE (5.0)
+finales_adeudados = 5: TRUE (1.0)
+
+Number of Leaves  :     72
+
+Size of the tree :      83
+
+> 
+> ## Use 10 fold cross-validation.
+> e <- evaluate_Weka_classifier(m, cost = matrix(c(0,2,1,0), ncol = 2),numFolds = 10, complexity = TRUE,seed = 123, class = TRUE)
+> e
+=== 10 Fold Cross Validation ===
+
+=== Summary ===
+
+Correctly Classified Instances          73               58.871  %
