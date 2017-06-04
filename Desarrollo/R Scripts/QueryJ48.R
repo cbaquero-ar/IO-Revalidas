@@ -2,15 +2,16 @@
 require("RWeka")
 
 df_postgres <- dbGetQuery(con, 
-	"SELECT  	 	
-	plan,
+	"SELECT  
 	finales_adeudados,
 	cursadas_adeudadas,
 	optativas_adeudadas,
 	adeuda_trab_final_inicio,
 	graduado
 	FROM revalidas 
-	WHERE usable=TRUE")
+	WHERE usable=TRUE
+	AND (fecha_graduado IS NULL 
+	OR fecha_graduado - fecha_inscripcion > 0 )")
 
 ## Identify a decision tree.
 df_postgres <- lapply(df_postgres, as.factor)

@@ -1,6 +1,5 @@
 SELECT  
-	floor((date_part('year',fecha_inscripcion)-anio_ingreso)/5)-1 as dif_anios_ingreso_rangos_de_5, 	 	
-	plan, 	 	
+	floor((date_part('year',fecha_inscripcion)-anio_ingreso)/5)-1 as dif_anios_ingreso_rangos_de_5, 	 		 	
 	finales_adeudados,
 	cursadas_adeudadas,
 	optativas_adeudadas,
@@ -8,38 +7,38 @@ SELECT
 	graduado
 	FROM revalidas 
 	WHERE usable=TRUE
+	AND (fecha_graduado IS NULL 
+	OR fecha_graduado - fecha_inscripcion > 0 )
 
 J48 unpruned tree
 ------------------
 
 finales_adeudados = 0
-|   plan = 1995
+|   dif_anios_ingreso_rangos_de_5 = 1
 |   |   adeuda_trab_final_inicio = FALSE
-|   |   |   optativas_adeudadas = 0: TRUE (3.0)
+|   |   |   optativas_adeudadas = 0: TRUE (2.0)
 |   |   |   optativas_adeudadas = 1: FALSE (1.0)
 |   |   |   optativas_adeudadas = 2: TRUE (0.0)
 |   |   |   optativas_adeudadas = 3: TRUE (0.0)
 |   |   |   optativas_adeudadas = 4: TRUE (0.0)
 |   |   |   optativas_adeudadas = 5: TRUE (0.0)
-|   |   adeuda_trab_final_inicio = TRUE: FALSE (3.0)
-|   plan = 88: FALSE (8.0/1.0)
-|   plan = S95: TRUE (70.0/25.0)
+|   |   adeuda_trab_final_inicio = TRUE: FALSE (42.0/21.0)
+|   dif_anios_ingreso_rangos_de_5 = 2: TRUE (22.0/6.0)
+|   dif_anios_ingreso_rangos_de_5 = 3: FALSE (7.0/2.0)
+|   dif_anios_ingreso_rangos_de_5 = 4: FALSE (4.0/1.0)
 finales_adeudados = 1
 |   cursadas_adeudadas = 0: FALSE (5.0)
 |   cursadas_adeudadas = 1
-|   |   plan = 1995: FALSE (0.0)
-|   |   plan = 88: FALSE (2.0)
-|   |   plan = S95
-|   |   |   optativas_adeudadas = 0
-|   |   |   |   dif_anios_ingreso_rangos_de_5 = 1: FALSE (3.0/1.0)
-|   |   |   |   dif_anios_ingreso_rangos_de_5 = 2: TRUE (1.0)
-|   |   |   |   dif_anios_ingreso_rangos_de_5 = 3: FALSE (0.0)
-|   |   |   |   dif_anios_ingreso_rangos_de_5 = 4: FALSE (0.0)
-|   |   |   optativas_adeudadas = 1: FALSE (1.0)
-|   |   |   optativas_adeudadas = 2: FALSE (1.0)
-|   |   |   optativas_adeudadas = 3: FALSE (0.0)
-|   |   |   optativas_adeudadas = 4: FALSE (0.0)
-|   |   |   optativas_adeudadas = 5: FALSE (0.0)
+|   |   optativas_adeudadas = 0
+|   |   |   dif_anios_ingreso_rangos_de_5 = 1: FALSE (3.0/1.0)
+|   |   |   dif_anios_ingreso_rangos_de_5 = 2: TRUE (1.0)
+|   |   |   dif_anios_ingreso_rangos_de_5 = 3: FALSE (1.0)
+|   |   |   dif_anios_ingreso_rangos_de_5 = 4: FALSE (1.0)
+|   |   optativas_adeudadas = 1: FALSE (1.0)
+|   |   optativas_adeudadas = 2: FALSE (1.0)
+|   |   optativas_adeudadas = 3: FALSE (0.0)
+|   |   optativas_adeudadas = 4: FALSE (0.0)
+|   |   optativas_adeudadas = 5: FALSE (0.0)
 |   cursadas_adeudadas = 2: FALSE (0.0)
 |   cursadas_adeudadas = 4: FALSE (0.0)
 finales_adeudados = 2
@@ -53,9 +52,9 @@ finales_adeudados = 3: FALSE (6.0)
 finales_adeudados = 4: FALSE (5.0)
 finales_adeudados = 5: TRUE (1.0)
 
-Number of Leaves  :     31
+Number of Leaves  :     30
 
-Size of the tree :      41
+Size of the tree :      39
 
 > 
 > ## Use 10 fold cross-validation.
@@ -65,4 +64,4 @@ Size of the tree :      41
 
 === Summary ===
 
-Correctly Classified Instances          84               67.7419 %
+Correctly Classified Instances          71               60.6838 %

@@ -1,45 +1,70 @@
-SELECT  
-	date_part('year',fecha_inscripcion)-anio_ingreso as dif_anios_ingreso_total,
-	plan,	
+SELECT  	 	
+	date_part('year',fecha_inscripcion)-anio_ingreso as dif_anios_ingreso_total, 	 	
 	finales_adeudados,
 	cursadas_adeudadas,
 	optativas_adeudadas,
 	adeuda_trab_final_inicio,
+	tutor_r1,
+	tutor_r2,
 	graduado
 	FROM revalidas 
 	WHERE usable=TRUE
+	AND (fecha_graduado IS NULL 
+	OR fecha_graduado - fecha_inscripcion > 0 )
 
 J48 unpruned tree
 ------------------
 
 finales_adeudados = 0
 |   dif_anios_ingreso_total = 10
-|   |   plan = 1995: FALSE (1.0)
-|   |   plan = 88: FALSE (0.0)
-|   |   plan = S95: TRUE (3.0/1.0)
+|   |   optativas_adeudadas = 0: TRUE (3.0/1.0)
+|   |   optativas_adeudadas = 1: FALSE (1.0)
+|   |   optativas_adeudadas = 2: FALSE (0.0)
+|   |   optativas_adeudadas = 3: FALSE (0.0)
+|   |   optativas_adeudadas = 4: FALSE (0.0)
+|   |   optativas_adeudadas = 5: FALSE (0.0)
 |   dif_anios_ingreso_total = 11
-|   |   adeuda_trab_final_inicio = FALSE: TRUE (3.0)
-|   |   adeuda_trab_final_inicio = TRUE: FALSE (8.0/3.0)
+|   |   tutor_r1 = FALSE: FALSE (3.0)
+|   |   tutor_r1 = TRUE: TRUE (5.0/2.0)
 |   dif_anios_ingreso_total = 12
-|   |   adeuda_trab_final_inicio = FALSE: TRUE (4.0)
+|   |   adeuda_trab_final_inicio = FALSE: TRUE (1.0)
 |   |   adeuda_trab_final_inicio = TRUE
-|   |   |   plan = 1995: FALSE (1.0)
-|   |   |   plan = 88: TRUE (0.0)
-|   |   |   plan = S95: TRUE (8.0/3.0)
+|   |   |   tutor_r1 = FALSE: TRUE (5.0/2.0)
+|   |   |   tutor_r1 = TRUE
+|   |   |   |   optativas_adeudadas = 0: TRUE (1.0)
+|   |   |   |   optativas_adeudadas = 1: FALSE (1.0)
+|   |   |   |   optativas_adeudadas = 2: FALSE (2.0/1.0)
+|   |   |   |   optativas_adeudadas = 3: FALSE (0.0)
+|   |   |   |   optativas_adeudadas = 4: FALSE (0.0)
+|   |   |   |   optativas_adeudadas = 5: FALSE (0.0)
 |   dif_anios_ingreso_total = 13
-|   |   plan = 1995: FALSE (1.0)
-|   |   plan = 88: TRUE (0.0)
-|   |   plan = S95: TRUE (14.0/5.0)
-|   dif_anios_ingreso_total = 14: FALSE (9.0/4.0)
+|   |   optativas_adeudadas = 0
+|   |   |   adeuda_trab_final_inicio = FALSE: TRUE (1.0)
+|   |   |   adeuda_trab_final_inicio = TRUE
+|   |   |   |   tutor_r1 = FALSE: TRUE (7.0/3.0)
+|   |   |   |   tutor_r1 = TRUE: FALSE (5.0/2.0)
+|   |   optativas_adeudadas = 1: TRUE (0.0)
+|   |   optativas_adeudadas = 2: TRUE (1.0)
+|   |   optativas_adeudadas = 3: TRUE (0.0)
+|   |   optativas_adeudadas = 4: TRUE (0.0)
+|   |   optativas_adeudadas = 5: TRUE (0.0)
+|   dif_anios_ingreso_total = 14
+|   |   tutor_r1 = FALSE: FALSE (4.0)
+|   |   tutor_r1 = TRUE: TRUE (5.0/1.0)
 |   dif_anios_ingreso_total = 15: TRUE (6.0/2.0)
 |   dif_anios_ingreso_total = 16: TRUE (7.0/2.0)
 |   dif_anios_ingreso_total = 17: TRUE (3.0)
-|   dif_anios_ingreso_total = 18: TRUE (3.0/1.0)
+|   dif_anios_ingreso_total = 18
+|   |   tutor_r1 = FALSE: FALSE (1.0)
+|   |   tutor_r1 = TRUE: TRUE (2.0)
 |   dif_anios_ingreso_total = 19: TRUE (3.0/1.0)
 |   dif_anios_ingreso_total = 21
-|   |   plan = 1995: TRUE (0.0)
-|   |   plan = 88: FALSE (1.0)
-|   |   plan = S95: TRUE (2.0)
+|   |   optativas_adeudadas = 0: TRUE (2.0)
+|   |   optativas_adeudadas = 1: TRUE (0.0)
+|   |   optativas_adeudadas = 2: TRUE (0.0)
+|   |   optativas_adeudadas = 3: TRUE (0.0)
+|   |   optativas_adeudadas = 4: FALSE (1.0)
+|   |   optativas_adeudadas = 5: TRUE (0.0)
 |   dif_anios_ingreso_total = 22: FALSE (2.0)
 |   dif_anios_ingreso_total = 23: FALSE (2.0)
 |   dif_anios_ingreso_total = 25: FALSE (1.0)
@@ -95,9 +120,9 @@ finales_adeudados = 3: FALSE (6.0)
 finales_adeudados = 4: FALSE (5.0)
 finales_adeudados = 5: TRUE (1.0)
 
-Number of Leaves  :     72
+Number of Leaves  :     89
 
-Size of the tree :      83
+Size of the tree :      105
 
 > 
 > ## Use 10 fold cross-validation.
@@ -107,4 +132,5 @@ Size of the tree :      83
 
 === Summary ===
 
-Correctly Classified Instances          73               58.871  %
+Correctly Classified Instances          64               54.7009 %
+Incorrectly Classified Instances        53               45.2991 %

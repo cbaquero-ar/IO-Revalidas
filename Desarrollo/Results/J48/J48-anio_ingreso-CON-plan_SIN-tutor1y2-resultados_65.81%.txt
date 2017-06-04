@@ -1,4 +1,4 @@
-SELECT  
+SELECT  	 	
 	anio_ingreso, 	 	
 	plan,
 	finales_adeudados,
@@ -8,49 +8,71 @@ SELECT
 	graduado
 	FROM revalidas 
 	WHERE usable=TRUE
+	AND (fecha_graduado IS NULL 
+	OR fecha_graduado - fecha_inscripcion > 0 )
+
 
 J48 unpruned tree
 ------------------
 
 finales_adeudados = 0
-|   anio_ingreso = 1986: TRUE (1.0)
-|   anio_ingreso = 1987: FALSE (1.0)
-|   anio_ingreso = 1988: FALSE (1.0)
-|   anio_ingreso = 1989: FALSE (1.0)
-|   anio_ingreso = 1991: FALSE (2.0)
-|   anio_ingreso = 1992: FALSE (2.0)
-|   anio_ingreso = 1993: TRUE (1.0)
-|   anio_ingreso = 1994
-|   |   plan = 1995: FALSE (0.0)
-|   |   plan = 88: FALSE (1.0)
-|   |   plan = S95: TRUE (1.0)
-|   anio_ingreso = 1995: TRUE (1.0)
-|   anio_ingreso = 1996: FALSE (4.0/2.0)
-|   anio_ingreso = 1997: TRUE (3.0)
-|   anio_ingreso = 1998: TRUE (4.0/1.0)
-|   anio_ingreso = 1999: TRUE (6.0/1.0)
-|   anio_ingreso = 2000
-|   |   optativas_adeudadas = 0: FALSE (5.0/1.0)
-|   |   optativas_adeudadas = 1: FALSE (0.0)
-|   |   optativas_adeudadas = 2: TRUE (1.0)
-|   |   optativas_adeudadas = 3: FALSE (0.0)
-|   |   optativas_adeudadas = 4: FALSE (0.0)
-|   |   optativas_adeudadas = 5: FALSE (0.0)
-|   anio_ingreso = 2001: TRUE (10.0/2.0)
-|   anio_ingreso = 2002
-|   |   adeuda_trab_final_inicio = FALSE: TRUE (1.0)
-|   |   adeuda_trab_final_inicio = TRUE: FALSE (15.0/5.0)
-|   anio_ingreso = 2003: TRUE (10.0/2.0)
-|   anio_ingreso = 2004
-|   |   adeuda_trab_final_inicio = FALSE: TRUE (3.0)
-|   |   adeuda_trab_final_inicio = TRUE: FALSE (4.0/1.0)
-|   anio_ingreso = 2005
-|   |   adeuda_trab_final_inicio = FALSE: TRUE (3.0)
-|   |   adeuda_trab_final_inicio = TRUE: FALSE (2.0)
-|   anio_ingreso = 2006
-|   |   plan = 1995: FALSE (1.0)
-|   |   plan = 88: FALSE (0.0)
-|   |   plan = S95: TRUE (1.0)
+|   plan = 1995: FALSE (4.0)
+|   plan = 88
+|   |   anio_ingreso = 1986: TRUE (1.0)
+|   |   anio_ingreso = 1987: FALSE (1.0)
+|   |   anio_ingreso = 1988: FALSE (1.0)
+|   |   anio_ingreso = 1989: FALSE (1.0)
+|   |   anio_ingreso = 1991: FALSE (2.0)
+|   |   anio_ingreso = 1992: FALSE (1.0)
+|   |   anio_ingreso = 1993: FALSE (0.0)
+|   |   anio_ingreso = 1994: FALSE (1.0)
+|   |   anio_ingreso = 1995: FALSE (0.0)
+|   |   anio_ingreso = 1996: FALSE (0.0)
+|   |   anio_ingreso = 1997: FALSE (0.0)
+|   |   anio_ingreso = 1998: FALSE (0.0)
+|   |   anio_ingreso = 1999: FALSE (0.0)
+|   |   anio_ingreso = 2000: FALSE (0.0)
+|   |   anio_ingreso = 2001: FALSE (0.0)
+|   |   anio_ingreso = 2002: FALSE (0.0)
+|   |   anio_ingreso = 2003: FALSE (0.0)
+|   |   anio_ingreso = 2004: FALSE (0.0)
+|   |   anio_ingreso = 2005: FALSE (0.0)
+|   |   anio_ingreso = 2006: FALSE (0.0)
+|   plan = S95
+|   |   anio_ingreso = 1986: TRUE (0.0)
+|   |   anio_ingreso = 1987: TRUE (0.0)
+|   |   anio_ingreso = 1988: TRUE (0.0)
+|   |   anio_ingreso = 1989: TRUE (0.0)
+|   |   anio_ingreso = 1991: TRUE (0.0)
+|   |   anio_ingreso = 1992: FALSE (1.0)
+|   |   anio_ingreso = 1993: TRUE (1.0)
+|   |   anio_ingreso = 1994: TRUE (1.0)
+|   |   anio_ingreso = 1995: TRUE (1.0)
+|   |   anio_ingreso = 1996: FALSE (4.0/2.0)
+|   |   anio_ingreso = 1997: TRUE (3.0)
+|   |   anio_ingreso = 1998: TRUE (4.0/1.0)
+|   |   anio_ingreso = 1999: TRUE (6.0/1.0)
+|   |   anio_ingreso = 2000
+|   |   |   optativas_adeudadas = 0: FALSE (5.0/1.0)
+|   |   |   optativas_adeudadas = 1: FALSE (0.0)
+|   |   |   optativas_adeudadas = 2: TRUE (1.0)
+|   |   |   optativas_adeudadas = 3: FALSE (0.0)
+|   |   |   optativas_adeudadas = 4: FALSE (0.0)
+|   |   |   optativas_adeudadas = 5: FALSE (0.0)
+|   |   anio_ingreso = 2001: TRUE (10.0/2.0)
+|   |   anio_ingreso = 2002
+|   |   |   optativas_adeudadas = 0
+|   |   |   |   adeuda_trab_final_inicio = FALSE: TRUE (1.0)
+|   |   |   |   adeuda_trab_final_inicio = TRUE: FALSE (11.0/5.0)
+|   |   |   optativas_adeudadas = 1: FALSE (1.0)
+|   |   |   optativas_adeudadas = 2: FALSE (2.0)
+|   |   |   optativas_adeudadas = 3: FALSE (0.0)
+|   |   |   optativas_adeudadas = 4: FALSE (0.0)
+|   |   |   optativas_adeudadas = 5: FALSE (0.0)
+|   |   anio_ingreso = 2003: TRUE (9.0/2.0)
+|   |   anio_ingreso = 2004: FALSE (2.0/1.0)
+|   |   anio_ingreso = 2005: FALSE (2.0)
+|   |   anio_ingreso = 2006: TRUE (1.0)
 finales_adeudados = 1
 |   cursadas_adeudadas = 0: FALSE (5.0)
 |   cursadas_adeudadas = 1
@@ -116,9 +138,9 @@ finales_adeudados = 3: FALSE (6.0)
 finales_adeudados = 4: FALSE (5.0)
 finales_adeudados = 5: TRUE (1.0)
 
-Number of Leaves  :     90
+Number of Leaves  :     110
 
-Size of the tree :      104
+Size of the tree :      123
 
 > 
 > ## Use 10 fold cross-validation.
@@ -128,4 +150,5 @@ Size of the tree :      104
 
 === Summary ===
 
-Correctly Classified Instances          79               63.7097 %
+Correctly Classified Instances          77               65.812  %
+Incorrectly Classified Instances        40               34.188  %

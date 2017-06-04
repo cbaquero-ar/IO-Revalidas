@@ -9,23 +9,19 @@ SELECT
 	graduado
 	FROM revalidas 
 	WHERE usable=TRUE
+	AND (fecha_graduado IS NULL 
+	OR fecha_graduado - fecha_inscripcion > 0 )
 
 J48 unpruned tree
 ------------------
 
 finales_adeudados = 0
-|   adeuda_trab_final_inicio = FALSE
-|   |   optativas_adeudadas = 0: TRUE (12.0)
-|   |   optativas_adeudadas = 1: FALSE (1.0)
-|   |   optativas_adeudadas = 2: TRUE (0.0)
-|   |   optativas_adeudadas = 3: TRUE (0.0)
-|   |   optativas_adeudadas = 4: FALSE (1.0)
-|   |   optativas_adeudadas = 5: TRUE (0.0)
-|   adeuda_trab_final_inicio = TRUE
-|   |   dif_anios_ingreso_rangos_de_4 = 1
-|   |   |   tutor_r1 = FALSE: FALSE (5.0/1.0)
-|   |   |   tutor_r1 = TRUE: TRUE (6.0/2.0)
-|   |   dif_anios_ingreso_rangos_de_4 = 2
+|   dif_anios_ingreso_rangos_de_4 = 1
+|   |   tutor_r1 = FALSE: FALSE (6.0/1.0)
+|   |   tutor_r1 = TRUE: TRUE (6.0/2.0)
+|   dif_anios_ingreso_rangos_de_4 = 2
+|   |   adeuda_trab_final_inicio = FALSE: TRUE (2.0)
+|   |   adeuda_trab_final_inicio = TRUE
 |   |   |   tutor_r1 = FALSE
 |   |   |   |   optativas_adeudadas = 0: FALSE (18.0/8.0)
 |   |   |   |   optativas_adeudadas = 1: TRUE (1.0)
@@ -40,14 +36,20 @@ finales_adeudados = 0
 |   |   |   |   optativas_adeudadas = 3: TRUE (0.0)
 |   |   |   |   optativas_adeudadas = 4: TRUE (0.0)
 |   |   |   |   optativas_adeudadas = 5: TRUE (0.0)
-|   |   dif_anios_ingreso_rangos_de_4 = 3: TRUE (13.0/4.0)
-|   |   dif_anios_ingreso_rangos_de_4 = 4
+|   dif_anios_ingreso_rangos_de_4 = 3: TRUE (16.0/4.0)
+|   dif_anios_ingreso_rangos_de_4 = 4
+|   |   optativas_adeudadas = 0
 |   |   |   tutor_r1 = FALSE: TRUE (1.0)
 |   |   |   tutor_r1 = TRUE: FALSE (5.0/1.0)
-|   |   dif_anios_ingreso_rangos_de_4 = 5: FALSE (2.0)
-|   |   dif_anios_ingreso_rangos_de_4 = 6
-|   |   |   tutor_r1 = FALSE: FALSE (1.0)
-|   |   |   tutor_r1 = TRUE: TRUE (1.0)
+|   |   optativas_adeudadas = 1: FALSE (0.0)
+|   |   optativas_adeudadas = 2: FALSE (0.0)
+|   |   optativas_adeudadas = 3: FALSE (0.0)
+|   |   optativas_adeudadas = 4: FALSE (1.0)
+|   |   optativas_adeudadas = 5: FALSE (0.0)
+|   dif_anios_ingreso_rangos_de_4 = 5: FALSE (2.0)
+|   dif_anios_ingreso_rangos_de_4 = 6
+|   |   tutor_r1 = FALSE: FALSE (1.0)
+|   |   tutor_r1 = TRUE: TRUE (1.0)
 finales_adeudados = 1
 |   cursadas_adeudadas = 0: FALSE (5.0)
 |   cursadas_adeudadas = 1
@@ -92,4 +94,4 @@ Size of the tree :      67
 
 === Summary ===
 
-Correctly Classified Instances          76               61.2903 %
+Correctly Classified Instances          71               60.6838 %

@@ -9,39 +9,41 @@ SELECT
 	graduado
 	FROM revalidas 
 	WHERE usable=TRUE
+	AND (fecha_graduado IS NULL 
+	OR fecha_graduado - fecha_inscripcion > 0 )
 
 J48 unpruned tree
 ------------------
 
 finales_adeudados = 0
-|   adeuda_trab_final_inicio = FALSE
-|   |   optativas_adeudadas = 0: TRUE (12.0)
-|   |   optativas_adeudadas = 1: FALSE (1.0)
+|   dif_anios_ingreso_rangos_de_2 = 1
+|   |   tutor_r1 = FALSE: FALSE (6.0/1.0)
+|   |   tutor_r1 = TRUE: TRUE (6.0/2.0)
+|   dif_anios_ingreso_rangos_de_2 = 2
+|   |   adeuda_trab_final_inicio = FALSE: TRUE (2.0)
+|   |   adeuda_trab_final_inicio = TRUE
+|   |   |   tutor_r1 = FALSE: TRUE (13.0/5.0)
+|   |   |   tutor_r1 = TRUE: FALSE (9.0/4.0)
+|   dif_anios_ingreso_rangos_de_2 = 3
+|   |   tutor_r1 = FALSE: FALSE (9.0/3.0)
+|   |   tutor_r1 = TRUE: TRUE (6.0/1.0)
+|   dif_anios_ingreso_rangos_de_2 = 4: TRUE (10.0/2.0)
+|   dif_anios_ingreso_rangos_de_2 = 5
+|   |   tutor_r1 = FALSE: FALSE (1.0)
+|   |   tutor_r1 = TRUE: TRUE (5.0/1.0)
+|   dif_anios_ingreso_rangos_de_2 = 6
+|   |   optativas_adeudadas = 0: TRUE (2.0)
+|   |   optativas_adeudadas = 1: TRUE (0.0)
 |   |   optativas_adeudadas = 2: TRUE (0.0)
 |   |   optativas_adeudadas = 3: TRUE (0.0)
 |   |   optativas_adeudadas = 4: FALSE (1.0)
 |   |   optativas_adeudadas = 5: TRUE (0.0)
-|   adeuda_trab_final_inicio = TRUE
-|   |   dif_anios_ingreso_rangos_de_2 = 1
-|   |   |   tutor_r1 = FALSE: FALSE (5.0/1.0)
-|   |   |   tutor_r1 = TRUE: TRUE (6.0/2.0)
-|   |   dif_anios_ingreso_rangos_de_2 = 2
-|   |   |   tutor_r1 = FALSE: TRUE (13.0/5.0)
-|   |   |   tutor_r1 = TRUE: FALSE (9.0/4.0)
-|   |   dif_anios_ingreso_rangos_de_2 = 3
-|   |   |   tutor_r1 = FALSE: FALSE (9.0/3.0)
-|   |   |   tutor_r1 = TRUE: TRUE (6.0/1.0)
-|   |   dif_anios_ingreso_rangos_de_2 = 4: TRUE (7.0/2.0)
-|   |   dif_anios_ingreso_rangos_de_2 = 5
-|   |   |   tutor_r1 = FALSE: FALSE (1.0)
-|   |   |   tutor_r1 = TRUE: TRUE (5.0/1.0)
-|   |   dif_anios_ingreso_rangos_de_2 = 6: TRUE (2.0)
-|   |   dif_anios_ingreso_rangos_de_2 = 7: FALSE (4.0)
-|   |   dif_anios_ingreso_rangos_de_2 = 8: FALSE (1.0)
-|   |   dif_anios_ingreso_rangos_de_2 = 9: FALSE (1.0)
-|   |   dif_anios_ingreso_rangos_de_2 = 10
-|   |   |   tutor_r1 = FALSE: FALSE (1.0)
-|   |   |   tutor_r1 = TRUE: TRUE (1.0)
+|   dif_anios_ingreso_rangos_de_2 = 7: FALSE (4.0)
+|   dif_anios_ingreso_rangos_de_2 = 8: FALSE (1.0)
+|   dif_anios_ingreso_rangos_de_2 = 9: FALSE (1.0)
+|   dif_anios_ingreso_rangos_de_2 = 10
+|   |   tutor_r1 = FALSE: FALSE (1.0)
+|   |   tutor_r1 = TRUE: TRUE (1.0)
 finales_adeudados = 1
 |   cursadas_adeudadas = 0: FALSE (5.0)
 |   cursadas_adeudadas = 1
@@ -90,4 +92,5 @@ Size of the tree :      65
 
 === Summary ===
 
-Correctly Classified Instances          78               62.9032 %
+Correctly Classified Instances          77               65.812  %
+Incorrectly Classified Instances        40               34.188  %

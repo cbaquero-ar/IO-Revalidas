@@ -58,15 +58,11 @@ finales_adeudados = 0
 |   anio_ingreso = 2002
 |   |   adeuda_trab_final_inicio = FALSE: TRUE (1.0)
 |   |   adeuda_trab_final_inicio = TRUE: FALSE (15.0/5.0)
-|   anio_ingreso = 2003: TRUE (10.0/2.0)
+|   anio_ingreso = 2003: TRUE (9.0/2.0)
 |   anio_ingreso = 2004
-|   |   adeuda_trab_final_inicio = FALSE: TRUE (3.0)
-|   |   adeuda_trab_final_inicio = TRUE
-|   |   |   tutor_r1 = FALSE: FALSE (3.0)
-|   |   |   tutor_r1 = TRUE: TRUE (1.0)
-|   anio_ingreso = 2005
-|   |   adeuda_trab_final_inicio = FALSE: TRUE (3.0)
-|   |   adeuda_trab_final_inicio = TRUE: FALSE (2.0)
+|   |   tutor_r1 = FALSE: FALSE (3.0)
+|   |   tutor_r1 = TRUE: TRUE (1.0)
+|   anio_ingreso = 2005: FALSE (2.0)
 |   anio_ingreso = 2006
 |   |   optativas_adeudadas = 0: TRUE (1.0)
 |   |   optativas_adeudadas = 1: FALSE (1.0)
@@ -132,9 +128,9 @@ finales_adeudados = 3: FALSE (6.0)
 finales_adeudados = 4: FALSE (5.0)
 finales_adeudados = 5: TRUE (1.0)
 
-Number of Leaves  :     100
+Number of Leaves  :     98
 
-Size of the tree :      119
+Size of the tree :      115
 
 > 
 > ## Use 10 fold cross-validation.
@@ -144,4 +140,5 @@ Size of the tree :      119
 
 === Summary ===
 
-Correctly Classified Instances          84               67.7419 %
+Correctly Classified Instances          73               62.3932 %
+Incorrectly Classified Instances        44               37.6068 %

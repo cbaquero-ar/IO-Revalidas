@@ -18,7 +18,10 @@ df_postgres <- dbGetQuery(con,
 	tutor_r2,
 	graduado
 	FROM revalidas 
-	WHERE usable=TRUE")
+	WHERE usable=TRUE
+	AND (fecha_graduado IS NULL 
+	OR fecha_graduado - fecha_inscripcion > 0 )
+	")
 
 df_postgres [ , ]
 str(df_postgres)

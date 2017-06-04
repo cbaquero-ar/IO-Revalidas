@@ -1,0 +1,73 @@
+SELECT  
+floor((date_part('year',fecha_inscripcion)-anio_ingreso)/3)-2 as dif_anios_ingreso_rangos_de_3, 	 	
+	plan,
+	finales_adeudados,
+	cursadas_adeudadas,
+	optativas_adeudadas,
+	adeuda_trab_final_inicio,
+	graduado
+	FROM revalidas 
+	WHERE usable=TRUE
+	AND (fecha_graduado IS NULL 
+	OR fecha_graduado - fecha_inscripcion > 0 )
+
+
+J48 unpruned tree
+------------------
+
+plan = 1995: FALSE (7.0)
+plan = 88: FALSE (11.0/1.0)
+plan = S95
+|   finales_adeudados = 0: TRUE (66.0/25.0)
+|   finales_adeudados = 1
+|   |   cursadas_adeudadas = 0: FALSE (5.0)
+|   |   cursadas_adeudadas = 1
+|   |   |   optativas_adeudadas = 0
+|   |   |   |   dif_anios_ingreso_rangos_de_3 = 1: FALSE (1.0)
+|   |   |   |   dif_anios_ingreso_rangos_de_3 = 2: FALSE (2.0/1.0)
+|   |   |   |   dif_anios_ingreso_rangos_de_3 = 3: TRUE (1.0)
+|   |   |   |   dif_anios_ingreso_rangos_de_3 = 4: FALSE (0.0)
+|   |   |   |   dif_anios_ingreso_rangos_de_3 = 5: FALSE (0.0)
+|   |   |   |   dif_anios_ingreso_rangos_de_3 = 6: FALSE (0.0)
+|   |   |   |   dif_anios_ingreso_rangos_de_3 = 7: FALSE (0.0)
+|   |   |   optativas_adeudadas = 1: FALSE (1.0)
+|   |   |   optativas_adeudadas = 2: FALSE (1.0)
+|   |   |   optativas_adeudadas = 3: FALSE (0.0)
+|   |   |   optativas_adeudadas = 4: FALSE (0.0)
+|   |   |   optativas_adeudadas = 5: FALSE (0.0)
+|   |   cursadas_adeudadas = 2: FALSE (0.0)
+|   |   cursadas_adeudadas = 4: FALSE (0.0)
+|   finales_adeudados = 2
+|   |   adeuda_trab_final_inicio = FALSE: TRUE (1.0)
+|   |   adeuda_trab_final_inicio = TRUE
+|   |   |   dif_anios_ingreso_rangos_de_3 = 1: FALSE (3.0)
+|   |   |   dif_anios_ingreso_rangos_de_3 = 2
+|   |   |   |   optativas_adeudadas = 0: TRUE (1.0)
+|   |   |   |   optativas_adeudadas = 1: FALSE (2.0)
+|   |   |   |   optativas_adeudadas = 2: FALSE (0.0)
+|   |   |   |   optativas_adeudadas = 3: FALSE (0.0)
+|   |   |   |   optativas_adeudadas = 4: FALSE (0.0)
+|   |   |   |   optativas_adeudadas = 5: FALSE (0.0)
+|   |   |   dif_anios_ingreso_rangos_de_3 = 3: FALSE (3.0)
+|   |   |   dif_anios_ingreso_rangos_de_3 = 4: FALSE (1.0)
+|   |   |   dif_anios_ingreso_rangos_de_3 = 5: FALSE (0.0)
+|   |   |   dif_anios_ingreso_rangos_de_3 = 6: FALSE (0.0)
+|   |   |   dif_anios_ingreso_rangos_de_3 = 7: FALSE (0.0)
+|   finales_adeudados = 3: FALSE (5.0)
+|   finales_adeudados = 4: FALSE (5.0)
+|   finales_adeudados = 5: TRUE (1.0)
+
+Number of Leaves  :     34
+
+Size of the tree :      42
+
+> 
+> ## Use 10 fold cross-validation.
+> e <- evaluate_Weka_classifier(m, cost = matrix(c(0,2,1,0), ncol = 2),numFolds = 10, complexity = TRUE,seed = 123, class = TRUE)
+> e
+=== 10 Fold Cross Validation ===
+
+=== Summary ===
+
+Correctly Classified Instances          76               64.9573 %
+Incorrectly Classified Instances        41               35.0427 %

@@ -1,4 +1,4 @@
-SELECT  
+SELECT  	 	
 	date_part('year',fecha_inscripcion)-anio_ingreso as dif_anios_ingreso_total, 	 	
 	finales_adeudados,
 	cursadas_adeudadas,
@@ -7,6 +7,8 @@ SELECT
 	graduado
 	FROM revalidas 
 	WHERE usable=TRUE
+	AND (fecha_graduado IS NULL 
+	OR fecha_graduado - fecha_inscripcion > 0 )
 
 J48 unpruned tree
 ------------------
@@ -19,11 +21,9 @@ finales_adeudados = 0
 |   |   optativas_adeudadas = 3: FALSE (0.0)
 |   |   optativas_adeudadas = 4: FALSE (0.0)
 |   |   optativas_adeudadas = 5: FALSE (0.0)
-|   dif_anios_ingreso_total = 11
-|   |   adeuda_trab_final_inicio = FALSE: TRUE (3.0)
-|   |   adeuda_trab_final_inicio = TRUE: FALSE (8.0/3.0)
-|   dif_anios_ingreso_total = 12: TRUE (13.0/4.0)
-|   dif_anios_ingreso_total = 13: TRUE (15.0/6.0)
+|   dif_anios_ingreso_total = 11: FALSE (8.0/3.0)
+|   dif_anios_ingreso_total = 12: TRUE (10.0/4.0)
+|   dif_anios_ingreso_total = 13: TRUE (14.0/6.0)
 |   dif_anios_ingreso_total = 14: FALSE (9.0/4.0)
 |   dif_anios_ingreso_total = 15: TRUE (6.0/2.0)
 |   dif_anios_ingreso_total = 16: TRUE (7.0/2.0)
@@ -92,9 +92,9 @@ finales_adeudados = 3: FALSE (6.0)
 finales_adeudados = 4: FALSE (5.0)
 finales_adeudados = 5: TRUE (1.0)
 
-Number of Leaves  :     73
+Number of Leaves  :     72
 
-Size of the tree :      81
+Size of the tree :      79
 
 > 
 > ## Use 10 fold cross-validation.
@@ -104,4 +104,5 @@ Size of the tree :      81
 
 === Summary ===
 
-Correctly Classified Instances          70               56.4516 %
+Correctly Classified Instances          68               58.1197 %
+Incorrectly Classified Instances        49               41.8803 %
