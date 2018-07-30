@@ -1,0 +1,82 @@
+[1] TRUE
+J48 unpruned tree
+------------------
+
+plan = 1995: FALSE (7.0)
+plan = 88: FALSE (11.0/1.0)
+plan = S95
+|   finales_adeudados = 0: TRUE (66.0/25.0)
+|   finales_adeudados = 1
+|   |   cursadas_adeudadas = 0: FALSE (5.0)
+|   |   cursadas_adeudadas = 1
+|   |   |   optativas_adeudadas = 0
+|   |   |   |   adeuda_trab_final_inicio = FALSE: TRUE (1.0)
+|   |   |   |   adeuda_trab_final_inicio = TRUE: FALSE (3.0/1.0)
+|   |   |   optativas_adeudadas = 1: FALSE (1.0)
+|   |   |   optativas_adeudadas = 2: FALSE (1.0)
+|   |   |   optativas_adeudadas = 3: FALSE (0.0)
+|   |   |   optativas_adeudadas = 4: FALSE (0.0)
+|   |   |   optativas_adeudadas = 5: FALSE (0.0)
+|   |   cursadas_adeudadas = 2: FALSE (0.0)
+|   |   cursadas_adeudadas = 4: FALSE (0.0)
+|   finales_adeudados = 2
+|   |   adeuda_trab_final_inicio = FALSE: TRUE (1.0)
+|   |   adeuda_trab_final_inicio = TRUE: FALSE (10.0/1.0)
+|   finales_adeudados = 3: FALSE (5.0)
+|   finales_adeudados = 4: FALSE (5.0)
+|   finales_adeudados = 5: TRUE (1.0)
+
+Number of Leaves  : 	18
+
+Size of the tree : 	24
+
+=== 10 Fold Cross Validation ===
+
+=== Summary ===
+
+Correctly Classified Instances          83               70.9402 %
+Incorrectly Classified Instances        34               29.0598 %
+Kappa statistic                          0.4349
+Total Cost                              41     
+Average Cost                             0.3504
+K&B Relative Info Score               3093.4318 %
+K&B Information Score                   30.1646 bits      0.2578 bits/instance
+Class complexity | order 0             113.7621 bits      0.9723 bits/instance
+Class complexity | scheme             5446.567  bits     46.5519 bits/instance
+Complexity improvement     (Sf)      -5332.805  bits    -45.5795 bits/instance
+Mean absolute error                      0.357 
+Root mean squared error                  0.4476
+Relative absolute error                 74.1939 %
+Root relative squared error             91.2805 %
+Total Number of Instances              117     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.614    0.149    0.860      0.614    0.717      0.461    0.672     0.758     FALSE
+                 0.851    0.386    0.597      0.851    0.702      0.461    0.672     0.498     TRUE
+Weighted Avg.    0.709    0.244    0.754      0.709    0.711      0.461    0.672     0.653     
+
+=== Cost Matrix ===
+
+ 0 1
+ 2 0
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 43 27 |  a = FALSE
+  7 40 |  b = TRUE
+                  Length Class  Mode     
+string             1     -none- character
+details            8     -none- numeric  
+detailsCost        1     -none- numeric  
+detailsComplexity  4     -none- numeric  
+detailsClass      12     -none- numeric  
+confusionMatrix    4     -none- numeric  
+              pctCorrect             pctIncorrect          pctUnclassified 
+              70.9401709               29.0598291                0.0000000 
+                   kappa        meanAbsoluteError     rootMeanSquaredError 
+               0.4349432                0.3569732                0.4476163 
+   relativeAbsoluteError rootRelativeSquaredError 
+              74.1939245               91.2805221 
